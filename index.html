@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mapping JS :: map interactive pour citeclaire.fr</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<!-- CSS -->
+	<style type="text/css">
+		table {	width: 80%;	}
+		table tr:hover {
+			background-color: #DFDFDF;
+			cursor: pointer;
+		}
+		/* /!\ definir le style des points de la carte interactive ICI */
+		div.point {
+			background-color: grey;
+			border: none;
+		}
+		div.point.selectedpoint {
+			background-color: green !important;
+			border: 2px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h1>Map interactive</h1>
+
+	<!-- MAP -->
+	<div id="mapcontainer">
+		<img src="map.jpg" style="width: 60%" />
+	</div>
+
+	<!-- TABLEAU -->
+	<p>Placer votre curseur sur une des lignes ci-dessous.</p>
+	<table id="t1">
+		<tr data-tagpoint="russie">
+			<td>Russie</td>
+			<td>Il y fait froid</td>
+		</tr>
+		<tr data-tagpoint="usa">
+			<td>USA</td>
+			<td>Il y fait chaud et froid</td>
+		</tr>
+		<tr data-tagpoint="afrique">
+			<td>Afrique</td>
+			<td>Il y fait chaud</td>
+		</tr>
+	</table>
+
+
+	<!-- JAVASCRIPT -->
+	<script src="mapping.js"></script>
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			//selecteur mapcontainer, dimensions de la carte lors de la declaration des points, bool_activer_proportionnalite_points, selecteurTableau
+			var map = new MapInteractive($('div#mapcontainer'), {x:500, y: 260}, true, $('table#t1') );
+
+			//map.ajouterPoint({position_X}, {position_Y}, {couleur_point_facultatif}, {diamtre_point}, {tag_point});
+			//si aucune couleur précisée pour un point, cela prendra la couleur div.point du CSS
+			map.ajouterPoint(100, 100, '', 15, 'usa');
+			map.ajouterPoint(350, 60, '', 50, 'russie');
+			map.ajouterPoint(265, 150, '', 40, 'afrique');	
+			map.afficher();			
+		});
+	</script>
+
+
+
+
+	
+</body>
+</html>
