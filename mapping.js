@@ -13,7 +13,7 @@
     		this.taillesreference = taillesreference;
     		this.pointsproportionnels = pointsproportionnels;
             this.tableau = tableau;
-    		this.points = [];
+    		this.points = []; 
 
             //SECURITES
     		if(this.map.length==0) { alert('Aucune carte (img) presente dans le mapcontainer !'); return;  }
@@ -113,7 +113,7 @@
                     selecteur.addClass('selectedpoint');
                 else
                     selecteur.removeClass('selectedpoint');
-            }
+            } 
         }
 
         //  END CLASS
